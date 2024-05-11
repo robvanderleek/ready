@@ -1,14 +1,15 @@
-import React, {Component} from "react";
+import React, {Component, useContext} from "react";
 
-export const DeviceOrientationContext = React.createContext({});
+const DeviceContext = React.createContext({});
 
-export class DeviceOrientationProvider extends Component {
+export class DeviceProvider extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
             initializing: true,
             isTouchDevice: false,
+            forceNonTouchDevice: false,
             orientation: null,
             screenWidth: window.screen.width
         }
@@ -53,12 +54,14 @@ export class DeviceOrientationProvider extends Component {
     render() {
         const {children} = this.props;
         return (
-            <DeviceOrientationContext.Provider value={{
+            <DeviceContext.Provider value={{
                 ...this.state
             }}>
                 {children}
-            </DeviceOrientationContext.Provider>
+            </DeviceContext.Provider>
         );
     }
 
 }
+
+export const useDevice = () => useContext(DeviceContext);

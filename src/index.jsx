@@ -7,15 +7,15 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import "ulog"
 import {RomContextProvider} from "./context/RomContext";
-import {DeviceOrientationProvider} from "./context/DeviceOrientationContext";
+import {DeviceProvider} from "./context/DeviceContext";
 
 ReactDOM.render(
     <React.StrictMode>
-        <DeviceOrientationProvider>
+        <DeviceProvider>
             <RomContextProvider>
                 <App/>
             </RomContextProvider>
-        </DeviceOrientationProvider>
+        </DeviceProvider>
     </React.StrictMode>,
     document.getElementById('root')
 );
